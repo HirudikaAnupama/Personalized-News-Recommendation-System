@@ -9,6 +9,7 @@
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="org.example.personalizednewsrecommendationsystem.ArticleManagement">
 
+
    <children>
       <Label layoutX="184.0" layoutY="118.0" text="Register"/>
    </children>
