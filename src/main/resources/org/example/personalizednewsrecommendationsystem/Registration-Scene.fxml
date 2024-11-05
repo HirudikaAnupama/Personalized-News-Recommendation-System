@@ -23,6 +23,6 @@
       <TextField fx:id="registeredUserName" layoutX="56.0" layoutY="147.0" prefHeight="31.0" prefWidth="263.0" />
       <TextField fx:id="registeredUserPassword" layoutX="59.0" layoutY="248.0" prefHeight="37.0" prefWidth="263.0" />
       <Button layoutX="101.0" layoutY="448.0" mnemonicParsing="false" onAction="#onClickBackButtonInRegistration" prefHeight="37.0" prefWidth="173.0" text="Back" />
-      <Label fx:id="registrationMSG" layoutX="66.0" layoutY="325.0" prefHeight="25.0" prefWidth="247.0" />
+      <Label fx:id="registrationMessage" layoutX="66.0" layoutY="325.0" prefHeight="25.0" prefWidth="247.0" />
    </children>
 </AnchorPane>
