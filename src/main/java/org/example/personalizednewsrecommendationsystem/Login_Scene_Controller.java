@@ -23,11 +23,6 @@ public class Login_Scene_Controller {
 
 
 
-
-
-
-
-
     @FXML
     private void onRegisterButtonClick(ActionEvent event) throws IOException {
         // Access the current stage from the button source
