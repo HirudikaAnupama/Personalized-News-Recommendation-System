@@ -19,7 +19,7 @@ public class DataBaseManagement {
     }
 
     // Method to check if the user already exists in the database
-    private boolean checkUserExists(String username, String password) {
+    public boolean checkUserExists(String username, String password) {
         String selectSQL = "SELECT COUNT(*) FROM UserTabel WHERE UserName = ? AND UserPassword = ?";
         try (Connection conn = connect();
              PreparedStatement pstmt = conn.prepareStatement(selectSQL)) {
@@ -46,6 +46,7 @@ public class DataBaseManagement {
         String userName = controller.getRegisteredUserName().getText();
         String userPassword = controller.getRegisteredUserPassword().getText();
 
+
         if (userName.isEmpty() || userPassword.isEmpty()) {
             controller.getRegistrationMessage().setText("Username and password cannot be empty.");
             return;
@@ -71,5 +72,8 @@ public class DataBaseManagement {
         } catch (SQLException e) {
             System.out.println("Error inserting user details: " + e.getMessage());
         }
+
     }
+
+
 }

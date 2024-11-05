@@ -32,6 +32,7 @@
         <Button layoutX="73.0" layoutY="365.0" mnemonicParsing="false" onAction="#onLoginSuccess" prefHeight="37.0" prefWidth="243.0" text="Login" />
         <Button layoutX="73.0" layoutY="438.0" mnemonicParsing="false" onAction="#onRegisterButtonClick" prefHeight="37.0" prefWidth="243.0" text="Register" />
         <TextField fx:id="loggingUserName" layoutX="62.0" layoutY="136.0" prefHeight="37.0" prefWidth="265.0" />
-        <PasswordField fx:id="loggingUserPassword" layoutX="62.0" layoutY="227.0" prefHeight="37.0" prefWidth="265.0" /> <!-- Changed to PasswordField -->
+        <PasswordField fx:id="loggingUserPassword" layoutX="62.0" layoutY="227.0" prefHeight="37.0" prefWidth="265.0" />
+      <Label fx:id="loggingMessage" layoutX="73.0" layoutY="297.0" prefHeight="25.0" prefWidth="252.0" /> <!-- Changed to PasswordField -->
     </children>
 </AnchorPane>
