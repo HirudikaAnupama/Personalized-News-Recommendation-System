@@ -6,23 +6,92 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.personalizednewsrecommendationsystem.Registration_Scene_Controller">
    <children>
-      <ImageView fitHeight="550.0" fitWidth="720.0" layoutY="-1.0" opacity="0.35" pickOnBounds="true">
+      <ImageView fitHeight="550.0" fitWidth="720.0" layoutY="-1.0" opacity="0.5" pickOnBounds="true">
          <image>
             <Image url="@../../../Background.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="550.0" fitWidth="340.0" layoutX="382.0" pickOnBounds="true">
+      <ImageView fitHeight="550.0" fitWidth="329.0" layoutX="393.0" pickOnBounds="true">
          <image>
             <Image url="@../../../image-1.jpg.png" />
          </image>
       </ImageView>
-      <Button layoutX="104.0" layoutY="386.0" mnemonicParsing="false" onAction="#onRegisterButtonConfirm" prefHeight="29.0" prefWidth="173.0" text="Register" />
-      <TextField fx:id="registeredUserName" layoutX="56.0" layoutY="147.0" prefHeight="31.0" prefWidth="263.0" />
-      <TextField fx:id="registeredUserPassword" layoutX="59.0" layoutY="248.0" prefHeight="37.0" prefWidth="263.0" />
-      <Button layoutX="101.0" layoutY="448.0" mnemonicParsing="false" onAction="#onClickBackButtonInRegistration" prefHeight="37.0" prefWidth="173.0" text="Back" />
-      <Label fx:id="registrationMessage" layoutX="66.0" layoutY="325.0" prefHeight="25.0" prefWidth="247.0" />
+      <Button layoutX="62.0" layoutY="400.0" mnemonicParsing="false" onAction="#onRegisterButtonConfirm" prefHeight="10.0" prefWidth="282.0" stylesheets="@../../../Buttons.css" text="Register" />
+      <TextField fx:id="registeredUserName" layoutX="62.0" layoutY="202.0" prefHeight="30.0" prefWidth="300.0" stylesheets="@../../../Text-Area.css" />
+      <TextField fx:id="registeredUserPassword" layoutX="62.0" layoutY="275.0" prefHeight="30.0" prefWidth="300.0" stylesheets="@../../../Text-Area.css" />
+      <Button layoutX="62.0" layoutY="466.0" mnemonicParsing="false" onAction="#onClickBackButtonInRegistration" prefHeight="10.0" prefWidth="282.0" stylesheets="@../../../Buttons.css" text="Back" />
+      <Label fx:id="registrationMessage" alignment="CENTER" layoutX="39.0" layoutY="341.0" prefHeight="25.0" prefWidth="329.0" textAlignment="CENTER" textFill="#790b0b">
+         <font>
+            <Font name="Times New Roman" size="18.0" />
+         </font></Label>
+      <ImageView fitHeight="60.0" fitWidth="200.0" layoutX="15.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Logo-2.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="68.0" layoutY="185.0" text="Username">
+         <font>
+            <Font name="Times New Roman" size="16.0" />
+         </font></Label>
+      <Label layoutX="69.0" layoutY="257.0" text="Password">
+         <font>
+            <Font name="Times New Roman" size="16.0" />
+         </font></Label>
+      <Label layoutX="62.0" layoutY="106.0" text="Register" textFill="#102d4d">
+         <font>
+            <Font name="Times New Roman Bold" size="42.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="77.0" fitWidth="134.0" layoutX="623.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Logo-3.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="558.0" layoutY="130.0" text="Facilities" textFill="WHITE">
+         <font>
+            <Font name="Times New Roman Bold" size="34.0" />
+         </font>
+      </Label>
+      <Label layoutX="568.0" layoutY="225.0" text="Tailored news feed" textFill="WHITE">
+         <font>
+            <Font name="Times New Roman" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="486.0" layoutY="291.0" text="Smart reading recommendations" textFill="WHITE">
+         <font>
+            <Font name="Times New Roman" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="553.0" layoutY="322.0" text="Discover new content" textFill="WHITE">
+         <font>
+            <Font name="Times New Roman" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="511.0" layoutY="391.0" text="Daily or weekly news digest" textFill="WHITE">
+         <font>
+            <Font name="Times New Roman" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="555.0" layoutY="357.0" text="Save articles for later" textFill="WHITE">
+         <font>
+            <Font name="Times New Roman" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="513.0" layoutY="257.0" text="Choose your favorite topics" textFill="WHITE">
+         <font>
+            <Font name="Times New Roman" size="16.0" />
+         </font>
+      </Label>
+      <Line endX="100.0" layoutX="590.0" layoutY="194.0" startX="-137.0" stroke="WHITE" />
+      <Label layoutX="539.0" layoutY="427.0" text="Get instant notifications" textFill="WHITE">
+         <font>
+            <Font name="Times New Roman" size="16.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

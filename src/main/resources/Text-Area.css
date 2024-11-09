@@ -1,0 +1,28 @@
+/* Define the base style for the TextField without borders */
+.text-field {
+    -fx-background-color: transparent; /* Make background transparent */
+    -fx-text-fill: #000000;            /* Text color */
+    -fx-border-color: transparent;     /* Remove all borders */
+    -fx-border-width: 0;               /* No border width */
+    -fx-padding: 5px;                  /* Padding */
+    -fx-font-size: 19px;               /* Font size */
+    -fx-font-family: "Times New Roman";          /* Font family */
+    -fx-border-style: none none solid none; /* Only bottom border */
+    -fx-border-color: #020202;         /* Bottom border color */
+    -fx-border-width: 0 0 1px 0;       /* Bottom border width */
+}
+
+/* Define the hover effect for the TextField */
+.text-field:hover {
+    -fx-background-color: transparent; /* Keep background transparent on hover */
+    -fx-border-color: #3c3d3c;         /* Change bottom border color on hover */
+    -fx-effect: dropshadow(gaussian, rgba(40, 40, 40, 0.75), 10, 0.5, 0, 3); /* Drop shadow effect */
+    -fx-text-fill: #000000;            /* Ensure text color remains black on hover */
+}
+
+/* Define the focus effect for the TextField */
+.text-field:focused {
+    -fx-background-color: transparent; /* Keep background transparent on focus */
+    -fx-border-color: #282828;         /* Change bottom border color on focus */
+    -fx-text-fill: #000000;            /* Ensure text color remains black on focus */
+}

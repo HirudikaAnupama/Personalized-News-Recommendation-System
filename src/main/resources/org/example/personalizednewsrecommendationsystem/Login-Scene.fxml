@@ -7,6 +7,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <!-- Import PasswordField -->
@@ -14,25 +15,57 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.personalizednewsrecommendationsystem.Login_Scene_Controller">
     <children>
         <Label layoutX="-157.0" layoutY="-94.0" text="Welcome back" />
-        <ImageView fitHeight="550.0" fitWidth="720.0" opacity="0.35" pickOnBounds="true">
+        <ImageView fitHeight="550.0" fitWidth="720.0" layoutY="-9.0" opacity="0.5" pickOnBounds="true">
             <image>
                 <Image url="@../../../Background.jpg" />
             </image>
         </ImageView>
-        <ImageView fitHeight="550.0" fitWidth="340.0" layoutX="382.0" pickOnBounds="true">
+        <ImageView fitHeight="550.0" fitWidth="329.0" layoutX="393.0" pickOnBounds="true">
             <image>
                 <Image url="@../../../image-1.jpg.png" />
             </image>
         </ImageView>
-        <Label layoutX="430.0" layoutY="154.0" prefHeight="121.0" prefWidth="252.0" text="Welcome Back to NewsFlow" textAlignment="RIGHT" textFill="WHITE" wrapText="true">
+        <Label layoutX="426.0" layoutY="125.0" prefHeight="121.0" prefWidth="263.0" text="Welcome Back to NewsFlow" textAlignment="RIGHT" textFill="WHITE" wrapText="true">
             <font>
-                <Font name="System Bold" size="30.0" />
+                <Font name="Times New Roman Bold" size="34.0" />
             </font>
         </Label>
-        <Button layoutX="73.0" layoutY="365.0" mnemonicParsing="false" onAction="#onLoginSuccess" prefHeight="37.0" prefWidth="243.0" text="Login" />
-        <Button layoutX="73.0" layoutY="438.0" mnemonicParsing="false" onAction="#onRegisterButtonClick" prefHeight="37.0" prefWidth="243.0" text="Register" />
-        <TextField fx:id="loggingUserName" layoutX="62.0" layoutY="136.0" prefHeight="37.0" prefWidth="265.0" />
-        <PasswordField fx:id="loggingUserPassword" layoutX="62.0" layoutY="227.0" prefHeight="37.0" prefWidth="265.0" />
-      <Label fx:id="loggingMessage" layoutX="73.0" layoutY="297.0" prefHeight="25.0" prefWidth="252.0" /> <!-- Changed to PasswordField -->
+        <Button layoutX="62.0" layoutY="400.0" mnemonicParsing="false" onAction="#onLoginSuccess" prefHeight="10.0" prefWidth="282.0" stylesheets="@../../../Buttons.css" text="Login" />
+        <Button layoutX="62.0" layoutY="466.0" mnemonicParsing="false" onAction="#onRegisterButtonClick" prefHeight="14.0" prefWidth="282.0" stylesheets="@../../../Buttons.css" text="Register" />
+        <TextField fx:id="loggingUserName" layoutX="62.0" layoutY="202.0" prefHeight="30.0" prefWidth="300.0" stylesheets="@../../../Text-Area.css" />
+        <PasswordField fx:id="loggingUserPassword" layoutX="62.0" layoutY="275.0" prefHeight="30.0" prefWidth="300.0" stylesheets="@../../../Text-Area.css" />
+      <Label fx:id="loggingMessage" alignment="CENTER" layoutX="62.0" layoutY="342.0" prefHeight="25.0" prefWidth="300.0" textAlignment="CENTER" textFill="#790b0b">
+         <font>
+            <Font name="Times New Roman" size="18.0" />
+         </font></Label>
+      <ImageView fitHeight="60.0" fitWidth="200.0" layoutX="15.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Logo-2.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="68.0" layoutY="185.0" text="Username">
+         <font>
+            <Font name="Times New Roman" size="16.0" />
+         </font></Label>
+      <Label layoutX="69.0" layoutY="257.0" text="Password">
+         <font>
+            <Font name="Times New Roman" size="16.0" />
+         </font></Label>
+      <Label layoutX="62.0" layoutY="106.0" text="Login" textFill="#102d4d">
+         <font>
+            <Font name="Times New Roman Bold" size="42.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="77.0" fitWidth="134.0" layoutX="623.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Logo-3.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="467.0" layoutY="278.0" prefHeight="129.0" prefWidth="222.0" text="Experience tailored news at your fingertips with our personalized recommendation system, delivering the latest articles curated to match your unique interests and reading patterns" textAlignment="RIGHT" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Times New Roman" size="16.0" />
+         </font>
+      </Label>
+      <Line endX="163.0" layoutX="524.0" layoutY="257.0" startX="-70.66668701171875" stroke="WHITE" /> <!-- Changed to PasswordField -->
     </children>
 </AnchorPane>

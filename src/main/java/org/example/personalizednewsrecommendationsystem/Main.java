@@ -17,7 +17,7 @@ public class Main extends Application {
         stage.getIcons().add(icon);
 
 
-        Scene scene = new Scene(fxmlLoader.load(), 700, 500);
+        Scene scene = new Scene(fxmlLoader.load(), 720, 550);
         stage.setTitle("NewsFlow");
         stage.setScene(scene);
         stage.show();
