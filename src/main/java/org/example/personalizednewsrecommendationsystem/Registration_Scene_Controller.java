@@ -11,10 +11,10 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.sql.*;
 import java.util.Objects;
 
 public class Registration_Scene_Controller {
+
 
     @FXML
     private TextField registeredUserName;
@@ -23,34 +23,28 @@ public class Registration_Scene_Controller {
     @FXML
     private Label registrationMessage;
 
+    private final UserManagement userManagement;
 
-    public TextField getRegisteredUserPassword() {
-        return registeredUserPassword;
+    public Registration_Scene_Controller() {
+        DataBaseManagement dbHandler = new DataBaseManagement();
+        this.userManagement = new UserManagement(dbHandler);
     }
 
-    public TextField getRegisteredUserName() {
-        return registeredUserName;
+    @FXML
+    private void onRegisterButtonConfirm() {
+        String username = registeredUserName.getText();
+        String password = registeredUserPassword.getText();
+        String registrationStatus = userManagement.registerUser(username, password);
+        registrationMessage.setText(registrationStatus);
     }
-
-    public Label getRegistrationMessage() {
-        return registrationMessage;
-    }
-
-
-    public void onRegisterButtonConfirm() {
-        DataBaseManagement B1 = new DataBaseManagement();
-        B1.inputUserDetails(this);
-    }
-
 
     public void onClickBackButtonInRegistration(ActionEvent event) throws IOException {
-
         // Access the current stage from the button source
         Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
         // Load the Registration Scene
         Parent parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Login-Scene.fxml")));
         // Set the scene, dimensions, and title for the Registration window
-        stage.setScene(new Scene(parent, 700, 500));
+        stage.setScene(new Scene(parent, 720, 550));
         stage.setTitle("NewsFlow");
 
     }

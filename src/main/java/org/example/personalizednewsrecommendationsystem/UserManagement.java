@@ -1,19 +1,28 @@
 package org.example.personalizednewsrecommendationsystem;
 
 public class UserManagement {
-    private Login_Scene_Controller controller;
+    private final DataBaseManagement dbHandler;
 
-    // Constructor to set the controller
-    public UserManagement(Login_Scene_Controller controller) {
-        this.controller = controller;
+    public UserManagement(DataBaseManagement dbHandler) {
+        this.dbHandler = dbHandler;
     }
 
-    public void check() {
-        String name = controller.getLoggingUserName().getText();
-        String password = controller.getLoggingUserPassword().getText();
-
-        if (name.isEmpty() || password.isEmpty()) {
-            controller.getLoggingMessage().setText("Empty");
+    // Registers a new user
+    public String registerUser(String username, String password) {
+        if (username.isEmpty() || password.isEmpty()) {
+            return "Username and Password cannot be empty *";
         }
+
+        if (dbHandler.checkUserExists(username, password)) {
+            return "Username already exists *";
+        }
+
+        dbHandler.insertUser(username, password);
+        return "User registered successfully !";
+    }
+
+    // Authenticates an existing user
+    public boolean authenticateUser(String username, String password) {
+        return dbHandler.checkUserExists(username, password);
     }
 }
