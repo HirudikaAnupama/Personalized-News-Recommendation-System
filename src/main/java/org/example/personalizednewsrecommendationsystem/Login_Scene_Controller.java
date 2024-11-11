@@ -15,12 +15,16 @@ import java.util.Objects;
 
 public class Login_Scene_Controller {
     private final UserManagement userManagement;
+
+
     @FXML
     private TextField loggingUserName;
     @FXML
     private TextField loggingUserPassword;
     @FXML
     private Label loggingMessage;
+
+    ArticleManagement a = new ArticleManagement();
 
 
 
@@ -33,6 +37,7 @@ public class Login_Scene_Controller {
     @FXML
     private void onRegisterButtonClick(ActionEvent event) throws IOException {
         navigateToScene(event, "Registration-Scene.fxml");
+        a.loadArticlesFromCsv();
     }
 
 
