@@ -11,7 +11,7 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.personalizednewsrecommendationsystem.Registration_Scene_Controller">
    <children>
-      <ImageView fitHeight="550.0" fitWidth="720.0" layoutY="-1.0" opacity="0.5" pickOnBounds="true">
+      <ImageView fitHeight="550.0" fitWidth="720.0" layoutY="-1.0" pickOnBounds="true">
          <image>
             <Image url="@../../../Background.jpg" />
          </image>
@@ -52,43 +52,43 @@
             <Image url="@../../../Logo-3.png" />
          </image>
       </ImageView>
-      <Label layoutX="558.0" layoutY="130.0" text="Facilities" textFill="WHITE">
+      <Label layoutX="565.0" layoutY="133.0" text="Features" textFill="WHITE">
          <font>
             <Font name="Times New Roman Bold" size="34.0" />
          </font>
       </Label>
-      <Label layoutX="568.0" layoutY="225.0" text="Tailored news feed" textFill="WHITE">
+      <Label layoutX="568.0" layoutY="223.0" text="Tailored news feed" textFill="WHITE">
          <font>
             <Font name="Times New Roman" size="16.0" />
          </font>
       </Label>
-      <Label layoutX="486.0" layoutY="291.0" text="Smart reading recommendations" textFill="WHITE">
+      <Label layoutX="486.0" layoutY="289.0" text="Smart reading recommendations" textFill="WHITE">
          <font>
             <Font name="Times New Roman" size="16.0" />
          </font>
       </Label>
-      <Label layoutX="553.0" layoutY="322.0" text="Discover new content" textFill="WHITE">
+      <Label layoutX="553.0" layoutY="320.0" text="Discover new content" textFill="WHITE">
          <font>
             <Font name="Times New Roman" size="16.0" />
          </font>
       </Label>
-      <Label layoutX="511.0" layoutY="391.0" text="Daily or weekly news digest" textFill="WHITE">
+      <Label layoutX="511.0" layoutY="389.0" text="Daily or weekly news digest" textFill="WHITE">
          <font>
             <Font name="Times New Roman" size="16.0" />
          </font>
       </Label>
-      <Label layoutX="555.0" layoutY="357.0" text="Save articles for later" textFill="WHITE">
+      <Label layoutX="555.0" layoutY="355.0" text="Save articles for later" textFill="WHITE">
          <font>
             <Font name="Times New Roman" size="16.0" />
          </font>
       </Label>
-      <Label layoutX="513.0" layoutY="257.0" text="Choose your favorite topics" textFill="WHITE">
+      <Label layoutX="513.0" layoutY="255.0" text="Choose your favorite topics" textFill="WHITE">
          <font>
             <Font name="Times New Roman" size="16.0" />
          </font>
       </Label>
-      <Line endX="100.0" layoutX="590.0" layoutY="194.0" startX="-137.0" stroke="WHITE" />
-      <Label layoutX="539.0" layoutY="427.0" text="Get instant notifications" textFill="WHITE">
+      <Line endX="100.0" layoutX="590.0" layoutY="192.0" startX="-137.0" stroke="WHITE" />
+      <Label layoutX="539.0" layoutY="425.0" text="Get instant notifications" textFill="WHITE">
          <font>
             <Font name="Times New Roman" size="16.0" />
          </font>

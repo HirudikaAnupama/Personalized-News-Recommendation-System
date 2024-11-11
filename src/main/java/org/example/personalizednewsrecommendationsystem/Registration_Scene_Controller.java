@@ -15,37 +15,42 @@ import java.util.Objects;
 
 public class Registration_Scene_Controller {
 
-
     @FXML
     private TextField registeredUserName;
     @FXML
     private TextField registeredUserPassword;
     @FXML
     private Label registrationMessage;
+    private UserManagement userManagement;
 
-    private final UserManagement userManagement;
-
-    public Registration_Scene_Controller() {
+    // Initialize method is called after the FXML file is loaded
+    @FXML
+    public void initialize() {
         DataBaseManagement dbHandler = new DataBaseManagement();
-        this.userManagement = new UserManagement(dbHandler);
+        userManagement = new UserManagement(dbHandler, this); // Pass 'this' to UserManagement
     }
 
+    // Getter methods for TextField values
+    public TextField getRegisteredUserName() {
+        return registeredUserName;
+    }
+
+    public TextField getRegisteredUserPassword() {
+        return registeredUserPassword;
+    }
+
+    // Event handler for the register button
     @FXML
     private void onRegisterButtonConfirm() {
-        String username = registeredUserName.getText();
-        String password = registeredUserPassword.getText();
-        String registrationStatus = userManagement.registerUser(username, password);
-        registrationMessage.setText(registrationStatus);
+        String registrationStatus = userManagement.registerUser(); // Register user
+        registrationMessage.setText(registrationStatus);           // Display message
     }
 
+    // Event handler for the back button
     public void onClickBackButtonInRegistration(ActionEvent event) throws IOException {
-        // Access the current stage from the button source
         Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-        // Load the Registration Scene
         Parent parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Login-Scene.fxml")));
-        // Set the scene, dimensions, and title for the Registration window
         stage.setScene(new Scene(parent, 720, 550));
         stage.setTitle("NewsFlow");
-
     }
 }

@@ -15,12 +15,6 @@ import java.util.Objects;
 
 public class Login_Scene_Controller {
     private final UserManagement userManagement;
-
-    public Login_Scene_Controller() {
-        DataBaseManagement dbHandler = new DataBaseManagement();
-        this.userManagement = new UserManagement(dbHandler);
-    }
-
     @FXML
     private TextField loggingUserName;
     @FXML
@@ -28,18 +22,20 @@ public class Login_Scene_Controller {
     @FXML
     private Label loggingMessage;
 
+
+
+    public Login_Scene_Controller() {
+        Registration_Scene_Controller register = new Registration_Scene_Controller();
+        DataBaseManagement dbHandler = new DataBaseManagement();
+        this.userManagement = new UserManagement(dbHandler, register);
+    }
+
     @FXML
     private void onRegisterButtonClick(ActionEvent event) throws IOException {
         navigateToScene(event, "Registration-Scene.fxml");
     }
 
 
-
-    private void navigateToScene(ActionEvent event, String fxmlFile) throws IOException {
-        Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-        Parent parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(fxmlFile)));
-        stage.setScene(new Scene(parent, 720, 550));
-    }
 
     public void onLoginSuccess(ActionEvent event) throws IOException {
 
@@ -51,5 +47,12 @@ public class Login_Scene_Controller {
         } else {
             loggingMessage.setText("Invalid credentials *");
         }
+    }
+
+
+    private void navigateToScene(ActionEvent event, String fxmlFile) throws IOException {
+        Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+        Parent parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(fxmlFile)));
+        stage.setScene(new Scene(parent, 720, 550));
     }
 }

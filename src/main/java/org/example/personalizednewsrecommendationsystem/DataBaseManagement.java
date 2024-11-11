@@ -39,4 +39,19 @@ public class DataBaseManagement {
             System.out.println("Error inserting user: " + e.getMessage());
         }
     }
+
+    public void insertArticle(int articleId, String title, String content, String keywords, String publicationDate) {
+        String query = "INSERT INTO ArticleTable (ArticleID, Title, Content, Keywords, PublicationDate) VALUES (?, ?, ?, ?, ?)";
+        try (Connection conn = connect();
+             PreparedStatement pstmt = conn.prepareStatement(query)) {
+            pstmt.setInt(1, articleId);
+            pstmt.setString(2, title);
+            pstmt.setString(3, content);
+            pstmt.setString(4, keywords);
+            pstmt.setString(5, publicationDate);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Error inserting article: " + e.getMessage());
+        }
+    }
 }
