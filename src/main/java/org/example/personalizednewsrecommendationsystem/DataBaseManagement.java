@@ -1,6 +1,10 @@
 package org.example.personalizednewsrecommendationsystem;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class DataBaseManagement {
     private static final String URL = "jdbc:sqlite:NewsFlow_News_Recommendation_System_DataBase.db";
@@ -40,18 +44,57 @@ public class DataBaseManagement {
         }
     }
 
-    public void insertArticle(int articleId, String title, String content, String keywords, String publicationDate) {
-        String query = "INSERT INTO ArticleTable (ArticleID, Title, Content, Keywords, PublicationDate) VALUES (?, ?, ?, ?, ?)";
+    public boolean checkArticleExists(String headline, String link) {
+        String query = "SELECT COUNT(*) FROM Articles WHERE headline = ? OR links = ?";
         try (Connection conn = connect();
              PreparedStatement pstmt = conn.prepareStatement(query)) {
-            pstmt.setInt(1, articleId);
-            pstmt.setString(2, title);
-            pstmt.setString(3, content);
-            pstmt.setString(4, keywords);
-            pstmt.setString(5, publicationDate);
-            pstmt.executeUpdate();
+            pstmt.setString(1, headline);
+            pstmt.setString(2, link);
+            ResultSet rs = pstmt.executeQuery();
+            return rs.next() && rs.getInt(1) > 0;
         } catch (SQLException e) {
-            System.out.println("Error inserting article: " + e.getMessage());
+            System.out.println("Error checking article existence: " + e.getMessage());
+            return false;
         }
     }
+
+    public void insertArticle(String category, String headline, String link, String shortDescription, String keywords) {
+
+        if (checkArticleExists(headline, link)) {
+            System.out.println("Article already exists, skipping insertion.");
+            return;
+        }
+
+        String query = "INSERT INTO Articles (category, headline, links, short_description, keywords) VALUES (?, ?, ?, ?, ?)";
+        int retryCount = 5; // Number of retries in case of lock error
+        int delay = 1000; // Delay in milliseconds before retrying
+
+        for (int i = 0; i < retryCount; i++) {
+            try (Connection conn = connect();
+                 PreparedStatement pstmt = conn.prepareStatement(query)) {
+                pstmt.setString(1, category);
+                pstmt.setString(2, headline);
+                pstmt.setString(3, link);
+                pstmt.setString(4, shortDescription);
+                pstmt.setString(5, keywords);
+                pstmt.executeUpdate();
+                System.out.println("Article inserted successfully.");
+                break; // Exit loop on successful insertion
+            } catch (SQLException e) {
+                if (e.getMessage().contains("database is locked")) {
+                    System.out.println("Database is locked, retrying...");
+                    try {
+                        Thread.sleep(delay); // Wait before retrying
+                    } catch (InterruptedException ie) {
+                        Thread.currentThread().interrupt();
+                        System.out.println("Retry interrupted.");
+                    }
+                } else {
+                    System.out.println("Error inserting article: " + e.getMessage());
+                    break;
+                }
+            }
+        }
+    }
+
 }
