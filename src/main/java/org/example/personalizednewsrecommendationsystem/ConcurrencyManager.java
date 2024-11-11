@@ -1,10 +1,4 @@
 package org.example.personalizednewsrecommendationsystem;
 
-
-public class ArticleManagement {
-
-
-
-
-
+public class ConcurrencyManager {
 }

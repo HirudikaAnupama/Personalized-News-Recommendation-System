@@ -1,15 +1,23 @@
 package org.example.personalizednewsrecommendationsystem;
 
 public class UserManagement {
-    private final DataBaseManagement dbHandler;
 
-    public UserManagement(DataBaseManagement dbHandler) {
+    public String username;
+    public String password;
+    private final DataBaseManagement dbHandler;
+    private final Registration_Scene_Controller registrationController;
+
+    public UserManagement(DataBaseManagement dbHandler, Registration_Scene_Controller registrationController) {
         this.dbHandler = dbHandler;
+        this.registrationController = registrationController;
     }
 
     // Registers a new user
-    public String registerUser(String username, String password) {
-        if (username.isEmpty() || password.isEmpty()) {
+    public String registerUser() {
+        username = registrationController.getRegisteredUserName().getText();
+        password = registrationController.getRegisteredUserPassword().getText();
+
+        if (username == null || username.isEmpty() || password == null || password.isEmpty()) {
             return "Username and Password cannot be empty *";
         }
 
@@ -18,7 +26,7 @@ public class UserManagement {
         }
 
         dbHandler.insertUser(username, password);
-        return "User registered successfully !";
+        return "User registered successfully!";
     }
 
     // Authenticates an existing user
