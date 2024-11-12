@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DataBaseManagement {
     private static final String URL = "jdbc:sqlite:NewsFlow_News_Recommendation_System_DataBase.db";
@@ -60,10 +62,7 @@ public class DataBaseManagement {
 
     public void insertArticle(String category, String headline, String link, String shortDescription, String keywords) {
 
-        if (checkArticleExists(headline, link)) {
-            System.out.println("Article already exists, skipping insertion.");
-            return;
-        }
+
 
         String query = "INSERT INTO Articles (category, headline, links, short_description, keywords) VALUES (?, ?, ?, ?, ?)";
         int retryCount = 5; // Number of retries in case of lock error
@@ -96,5 +95,38 @@ public class DataBaseManagement {
             }
         }
     }
+
+    public List<String> getHeadlines() {
+        List<String> headlines = new ArrayList<>();
+        String query = "SELECT headline FROM Articles";
+        try (Connection conn = connect();
+             PreparedStatement pstmt = conn.prepareStatement(query);
+             ResultSet rs = pstmt.executeQuery()) {
+            while (rs.next()) {
+                headlines.add(rs.getString("headline"));
+            }
+        } catch (SQLException e) {
+            System.out.println("Error fetching headlines: " + e.getMessage());
+        }
+        return headlines;
+    }
+
+
+    public String getArticleDescription(String headline) {
+        String query = "SELECT short_description FROM Articles WHERE headline = ?";
+        try (Connection conn = connect();
+             PreparedStatement pstmt = conn.prepareStatement(query)) {
+            pstmt.setString(1, headline);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                return rs.getString("short_description");
+            }
+        } catch (SQLException e) {
+            System.out.println("Error fetching description: " + e.getMessage());
+        }
+        return "Description not available.";
+    }
+
+
 
 }
