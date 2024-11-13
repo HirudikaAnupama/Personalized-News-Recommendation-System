@@ -37,6 +37,7 @@ public class Login_Scene_Controller {
     @FXML
     private void onRegisterButtonClick(ActionEvent event) throws IOException {
         navigateToScene(event, "Registration-Scene.fxml");
+        a.loadArticlesFromCsv();
 
     }
 

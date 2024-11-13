@@ -60,30 +60,27 @@ public class DataBaseManagement {
         }
     }
 
-    public void insertArticle(String category, String headline, String link, String shortDescription, String keywords) {
-
-
-
-        String query = "INSERT INTO Articles (category, headline, links, short_description, keywords) VALUES (?, ?, ?, ?, ?)";
-        int retryCount = 5; // Number of retries in case of lock error
-        int delay = 1000; // Delay in milliseconds before retrying
+    public void insertArticle(String headline, String shortDescription, String category) {
+        String query = "INSERT INTO Articles (headline, description, category) VALUES (?, ?, ?)";
+        int retryCount = 5;
+        int delay = 1000;
 
         for (int i = 0; i < retryCount; i++) {
             try (Connection conn = connect();
                  PreparedStatement pstmt = conn.prepareStatement(query)) {
-                pstmt.setString(1, category);
-                pstmt.setString(2, headline);
-                pstmt.setString(3, link);
-                pstmt.setString(4, shortDescription);
-                pstmt.setString(5, keywords);
+
+                pstmt.setString(1, headline);
+                pstmt.setString(2, shortDescription);
+                pstmt.setString(3, category);
+
                 pstmt.executeUpdate();
                 System.out.println("Article inserted successfully.");
-                break; // Exit loop on successful insertion
+                break;
             } catch (SQLException e) {
                 if (e.getMessage().contains("database is locked")) {
                     System.out.println("Database is locked, retrying...");
                     try {
-                        Thread.sleep(delay); // Wait before retrying
+                        Thread.sleep(delay);
                     } catch (InterruptedException ie) {
                         Thread.currentThread().interrupt();
                         System.out.println("Retry interrupted.");
@@ -95,6 +92,7 @@ public class DataBaseManagement {
             }
         }
     }
+
 
     public List<String> getHeadlines() {
         List<String> headlines = new ArrayList<>();
@@ -112,14 +110,15 @@ public class DataBaseManagement {
     }
 
 
+
     public String getArticleDescription(String headline) {
-        String query = "SELECT short_description FROM Articles WHERE headline = ?";
+        String query = "SELECT description FROM Articles WHERE headline = ?";
         try (Connection conn = connect();
              PreparedStatement pstmt = conn.prepareStatement(query)) {
             pstmt.setString(1, headline);
             ResultSet rs = pstmt.executeQuery();
             if (rs.next()) {
-                return rs.getString("short_description");
+                return rs.getString("description");
             }
         } catch (SQLException e) {
             System.out.println("Error fetching description: " + e.getMessage());
