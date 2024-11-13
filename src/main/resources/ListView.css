@@ -1,0 +1,78 @@
+/* Style for the ListView */
+.list-view {
+    -fx-background-color: #f2f2f2;      /* Light background */
+    -fx-border-color: #d9d9d9;          /* Border color */
+    -fx-border-radius: 8px;             /* Rounded corners */
+    -fx-padding: 8px;                   /* Increased padding */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 5, 0.2, 2, 2); /* Light shadow */
+    -fx-font-family: "Times New Roman";           /* Set font family */
+    -fx-font-weight: bold;
+}
+
+/* Style for each cell in the ListView */
+.list-cell {
+    -fx-background-color: #ffffff;       /* White background for each cell */
+    -fx-text-fill: #333333;              /* Darker text color */
+    -fx-font-size: 20px;                 /* Font size */
+    -fx-padding: 10px;                   /* Padding inside each cell */
+    -fx-border-color: transparent transparent #e0e0e0 transparent; /* Bottom border */
+    -fx-pref-height: 150px;
+    -fx-pref-width: 150px;
+    -fx-border-radius: 5px;              /* Slight rounding on cell corners */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 3, 0.2, 1, 1); /* Slight shadow */
+    -fx-transition: background-color 0.3s ease, text-fill 0.3s ease; /* Smooth transition */
+}
+
+/* Change background color on hover */
+.list-cell:hover {
+    -fx-background-color: #e6f7ff;       /* Light blue on hover */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 4, 0.3, 2, 2); /* Slightly enhanced shadow */
+}
+
+/* Change background color and style when selected */
+.list-cell:selected {
+    -fx-background-color: #bae7ff;       /* Slightly darker blue when selected */
+    -fx-text-fill: #000000;              /* Text color when selected */
+    -fx-font-weight: bold;               /* Bold text for selected item */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 5, 0.4, 3, 3); /* More pronounced shadow */
+    -fx-border-color: #1890ff;           /* Highlight border */
+    -fx-border-width: 2px;               /* Thicker border for selected */
+}
+
+/* Scroll bar styling */
+.scroll-bar {
+    -fx-background-color: transparent; /* Transparent background for scrollbar track */
+    -fx-padding: 4px;
+}
+
+/* Styling for the track of the scrollbar */
+.scroll-bar .track {
+    -fx-background-color: #e0e0e0;  /* Light grey track */
+    -fx-border-radius: 5px;
+    -fx-background-insets: 2;
+}
+
+/* Styling for the thumb (draggable part) of the scrollbar */
+.scroll-bar .thumb {
+    -fx-background-color: #b3cde0;     /* Light blue thumb color */
+    -fx-background-radius: 5px;
+    -fx-pref-width: 8px;               /* Width for vertical scrollbar */
+    -fx-pref-height: 8px;              /* Height for horizontal scrollbar */
+}
+
+/* Change thumb color on hover */
+.scroll-bar .thumb:hover {
+    -fx-background-color: #8cb2c9;     /* Darker blue on hover */
+}
+
+/* Change thumb color when pressed */
+.scroll-bar .thumb:pressed {
+    -fx-background-color: #6699a1;     /* Darker blue when pressed */
+}
+
+/* Styling for scrollbar buttons (optional) */
+.scroll-bar .increment-button, .scroll-bar .decrement-button {
+    -fx-background-color: transparent; /* Transparent buttons */
+    -fx-padding: 0;                     /* Remove padding for a clean look */
+}
+
