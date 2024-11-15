@@ -94,20 +94,23 @@ public class DataBaseManagement {
     }
 
 
-    public List<String> getHeadlines() {
-        List<String> headlines = new ArrayList<>();
-        String query = "SELECT headline FROM Articles";
+    public List<String> getHeadlinesWithCategories() {
+        List<String> headlinesWithCategories = new ArrayList<>();
+        String query = "SELECT category, headline FROM Articles";
         try (Connection conn = connect();
              PreparedStatement pstmt = conn.prepareStatement(query);
              ResultSet rs = pstmt.executeQuery()) {
             while (rs.next()) {
-                headlines.add(rs.getString("headline"));
+                String category = rs.getString("category");
+                String headline = rs.getString("headline");
+                headlinesWithCategories.add(category + "\n" + headline); // Format as "Category\nHeadline"
             }
         } catch (SQLException e) {
-            System.out.println("Error fetching headlines: " + e.getMessage());
+            System.out.println("Error fetching headlines with categories: " + e.getMessage());
         }
-        return headlines;
+        return headlinesWithCategories;
     }
+
 
 
 
