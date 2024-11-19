@@ -57,7 +57,7 @@ public class View_Article_Scene_Controller {
     public void onBackToViewArticleList(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
         Parent parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Article-List-Scene.fxml")));
-        stage.setScene(new Scene(parent, 720, 550));
+        stage.setScene(new Scene(parent, 900, 650));
         stage.setTitle("NewsFlow");
     }
 

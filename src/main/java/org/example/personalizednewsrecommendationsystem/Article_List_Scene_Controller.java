@@ -131,15 +131,16 @@ public class Article_List_Scene_Controller {
             controller.setDescription(description);
             controller.setImage(imagePath);
 
-            Stage stage = new Stage();
+            // Get the current stage and set the new scene
+            Stage stage = (Stage) headlinesListView.getScene().getWindow(); // Replace userNameDisplay with any existing node
             stage.setScene(new Scene(root));
             stage.setTitle("Article Details");
-            stage.show();
         } catch (Exception e) {
             System.out.println("Error loading View-Article scene: " + e.getMessage());
             e.printStackTrace();
         }
     }
+
 
     private String getImagePathForHeadline(int articleID) {
         File imageDir = new File("src/main/resources/newsImage");
