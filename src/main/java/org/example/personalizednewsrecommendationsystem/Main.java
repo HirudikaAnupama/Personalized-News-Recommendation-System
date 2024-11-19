@@ -26,6 +26,7 @@ public class Main extends Application {
 
         Scene scene = new Scene(fxmlLoader.load(), 720, 550);
         stage.setTitle("NewsFlow");
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
     }
