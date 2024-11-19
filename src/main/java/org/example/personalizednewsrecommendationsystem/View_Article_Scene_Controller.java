@@ -16,17 +16,26 @@ import java.util.Objects;
 
 public class View_Article_Scene_Controller {
 
+    @FXML
     public Button liked;
+    @FXML
     public Button skipped;
+    @FXML
     public Button read;
     @FXML
     private Label descriptionLabel;
     @FXML
     private ImageView articleImageView;
 
+    private final DataBaseManagement dbManager = new DataBaseManagement();
+    private int userID;
+    private int articleID;
 
-
-
+    // Set UserID and ArticleID (called when scene is loaded)
+    public void setUserAndArticle(int userID, int articleID) {
+        this.userID = userID;
+        this.articleID = articleID;
+    }
 
     // Method to set the article description text
     public void setDescription(String description) {
@@ -37,27 +46,36 @@ public class View_Article_Scene_Controller {
     public void setImage(String imagePath) {
         if (imagePath != null) {
             Image image = new Image(imagePath);
-            articleImageView.setImage(image);  // Set the image on the ImageView
+            articleImageView.setImage(image); // Set the image on the ImageView
         } else {
             // Optionally, set a default image if no image is found
             Image defaultImage = new Image(getClass().getResource("/path/to/default/image.png").toString());
-            articleImageView.setImage(defaultImage);  // Set a default image
+            articleImageView.setImage(defaultImage); // Set a default image
         }
     }
 
     public void onBackToViewArticleList(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
         Parent parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Article-List-Scene.fxml")));
-        stage.setScene(new Scene(parent, 900, 650));
+        stage.setScene(new Scene(parent, 720, 550));
         stage.setTitle("NewsFlow");
     }
 
+    // Store interaction type "Liked"
     public void onLikedButtonClick(ActionEvent event) {
+        dbManager.storeUserInteraction(userID, articleID, "Liked");
     }
 
+    // Store interaction type "Skipped"
     public void onSkippedButtonClick(ActionEvent event) {
+        dbManager.storeUserInteraction(userID, articleID, "Skipped");
     }
 
+    // Store interaction type "Read"
     public void onReadButtonClick(ActionEvent event) {
+        dbManager.storeUserInteraction(userID, articleID, "Read");
+
     }
+
+
 }

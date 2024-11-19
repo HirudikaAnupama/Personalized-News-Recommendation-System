@@ -33,4 +33,6 @@ public class UserManagement {
     public boolean authenticateUser(String username, String password) {
         return dbHandler.checkUserExists(username, password);
     }
+
+
 }
