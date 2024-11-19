@@ -26,6 +26,8 @@ public class View_Article_Scene_Controller {
 
 
 
+
+
     // Method to set the article description text
     public void setDescription(String description) {
         descriptionLabel.setText(description);
