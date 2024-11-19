@@ -130,5 +130,53 @@ public class DataBaseManagement {
     }
 
 
+    public int getUserID(String username) {
+        String query = "SELECT UserID FROM UserTabel WHERE UserName = ?";
+        try (Connection conn = connect();
+             PreparedStatement pstmt = conn.prepareStatement(query)) {
+            pstmt.setString(1, username);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("UserID");
+            }
+        } catch (SQLException e) {
+            System.out.println("Error fetching UserID: " + e.getMessage());
+        }
+        return -1; // Return -1 if UserID not found
+    }
+
+    // Retrieve ArticleID by headline
+    public int getArticleID(String headline) {
+        String query = "SELECT ArticleID FROM Articles WHERE headline = ?";
+        try (Connection conn = connect();
+             PreparedStatement pstmt = conn.prepareStatement(query)) {
+            pstmt.setString(1, headline);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("ArticleID");
+            }
+        } catch (SQLException e) {
+            System.out.println("Error fetching ArticleID: " + e.getMessage());
+        }
+        return -1; // Return -1 if ArticleID not found
+    }
+
+    // Store interaction in UserReadingHistory
+    public void storeUserInteraction(int userID, int articleID, String interactionType) {
+        String query = "INSERT INTO UserReadingHistory (UserID, ArticleID, InteractionType) VALUES (?, ?, ?)";
+        try (Connection conn = connect();
+             PreparedStatement pstmt = conn.prepareStatement(query)) {
+            pstmt.setInt(1, userID);
+            pstmt.setInt(2, articleID);
+            pstmt.setString(3, interactionType);
+            pstmt.executeUpdate();
+            System.out.println("Interaction stored successfully.");
+        } catch (SQLException e) {
+            System.out.println("Error storing user interaction: " + e.getMessage());
+        }
+    }
+
+
+
 
 }

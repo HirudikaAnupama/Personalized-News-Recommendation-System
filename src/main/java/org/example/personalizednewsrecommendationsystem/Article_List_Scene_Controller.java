@@ -3,17 +3,17 @@ package org.example.personalizednewsrecommendationsystem;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
-import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.util.Callback;
 
 import java.io.File;
@@ -21,24 +21,33 @@ import java.util.List;
 
 public class Article_List_Scene_Controller {
 
-
     @FXML
     private ListView<String> headlinesListView;
 
     private final DataBaseManagement dbManager = new DataBaseManagement();
 
+    private int userID; // UserID passed from login scene
+
+    public void setUserID(int userID) {
+        this.userID = userID;
+        // Additional logic based on userID
+    }
+
+
     @FXML
     public void initialize() {
+        // Load headlines with categories from the database
         List<String> headlinesWithCategories = dbManager.getHeadlinesWithCategories();
         ObservableList<String> observableHeadlines = FXCollections.observableArrayList(headlinesWithCategories);
         headlinesListView.setItems(observableHeadlines);
 
+        // Directory for article images
         File imageDir = new File("src/main/resources/newsImage");
         File[] images = imageDir.listFiles();
-        int imageCount = images != null ? images.length : 0;
+        int imageCount = (images != null) ? images.length : 0;
 
-        // Set custom cell factory to display category, headline, and image (if available)
-        headlinesListView.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
+        // Custom cell factory for ListView
+        headlinesListView.setCellFactory(new Callback<>() {
             @Override
             public ListCell<String> call(ListView<String> listView) {
                 return new ListCell<>() {
@@ -61,13 +70,13 @@ public class Article_List_Scene_Controller {
                         if (empty || item == null) {
                             setGraphic(null);
                         } else {
-                            String[] parts = item.split("\n", 2);
+                            String[] parts = item.split("\n", 2); // Split category and headline
                             categoryLabel.setText(parts[0]);
                             headlineLabel.setText(parts[1]);
 
-                            // Try to load the image based on index; if unavailable, use a placeholder or skip setting an image
+                            // Assign image based on index or default to placeholder
                             try {
-                                if (images != null && images.length > 0) {
+                                if (images != null && imageCount > 0) {
                                     int imageIndex = getIndex() % imageCount;
                                     File imageFile = images[imageIndex];
 
@@ -75,76 +84,69 @@ public class Article_List_Scene_Controller {
                                         Image image = new Image(imageFile.toURI().toString());
                                         imageView.setImage(image);
                                     } else {
-                                        throw new Exception("File not found or not a valid file: " + imageFile.getName());
+                                        throw new Exception("Invalid image file: " + imageFile.getName());
                                     }
                                 } else {
-                                    throw new Exception("Image directory is empty or not found");
+                                    throw new Exception("No images available in the directory");
                                 }
                             } catch (Exception e) {
-                                System.out.println("Error loading image: " + e.getMessage());
-                                imageView.setImage(null); // Clear image or set a placeholder
-                                // Optionally set a default placeholder image if available in resources
-                                // Image placeholder = new Image(getClass().getResource("/path/to/placeholder.png").toString());
-                                // imageView.setImage(placeholder);
+                                System.out.println("Image loading error: " + e.getMessage());
+                                imageView.setImage(null); // Optional: Set a placeholder image
                             }
 
-                            // Arrange components in an HBox layout
+                            // Arrange content in a layout
                             VBox textBox = new VBox(categoryLabel, headlineLabel);
                             HBox hbox = new HBox(imageView, textBox);
-                            hbox.setSpacing(10); // Add space between image and text
+                            hbox.setSpacing(10);
                             setGraphic(hbox);
                         }
                     }
-
                 };
             }
         });
 
-        // Add click listener to headlines
+        // Handle clicks on headlines
         headlinesListView.setOnMouseClicked(event -> {
             String selectedHeadline = headlinesListView.getSelectionModel().getSelectedItem();
             if (selectedHeadline != null) {
                 String headline = selectedHeadline.split("\n", 2)[1];
-                showDescriptionScene(headline);
+                int articleID = dbManager.getArticleID(headline); // Retrieve ArticleID
+                showDescriptionScene(headline, articleID);
             }
         });
     }
 
-    public void showDescriptionScene(String headline) {
+    private void showDescriptionScene(String headline, int articleID) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("View-Article-Scene.fxml"));
             Parent root = loader.load();
 
-            // Get the description and image path for the selected headline
+            // Get article description and image path
             String description = dbManager.getArticleDescription(headline);
-            String imagePath = getImagePathForHeadline(headline);  // Get the image path relative to the headline
+            String imagePath = getImagePathForHeadline(articleID);
 
-            // Pass the description and image path to the ViewArticles controller
+            // Pass data to the View-Article controller
             View_Article_Scene_Controller controller = loader.getController();
+            controller.setUserAndArticle(userID, articleID);
             controller.setDescription(description);
-            controller.setImage(imagePath);  // Pass the image path
+            controller.setImage(imagePath);
 
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
-            stage.setTitle("Article Description");
+            stage.setTitle("Article Details");
             stage.show();
         } catch (Exception e) {
-            System.out.println("Error loading ViewArticles scene: " + e.getMessage());
+            System.out.println("Error loading View-Article scene: " + e.getMessage());
             e.printStackTrace();
         }
     }
 
-    private String getImagePathForHeadline(String headline) {
-        // Get the index of the selected headline (for example, use index % imageCount to match images)
-        int index = headlinesListView.getSelectionModel().getSelectedIndex();
+    private String getImagePathForHeadline(int articleID) {
         File imageDir = new File("src/main/resources/newsImage");
         File[] images = imageDir.listFiles();
-        if (images != null && index < images.length) {
-            return images[index].toURI().toString();  // Return the URI of the image corresponding to the headline
+        if (images != null && articleID % images.length < images.length) {
+            return images[articleID % images.length].toURI().toString(); // Return corresponding image URI
         }
-        return null;  // Return null if no image found for the headline
+        return null; // No image available
     }
-
-
-
 }
