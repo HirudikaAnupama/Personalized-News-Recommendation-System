@@ -36,7 +36,7 @@ public class Main_Dashboard_Scene_Controller {
      */
     private void updateUserDisplay() {
         if (userNameDisplay != null) {
-            userNameDisplay.setText("Welcome, " + userName + "!");
+            userNameDisplay.setText("Welcome " + userName);
         }
     }
 
