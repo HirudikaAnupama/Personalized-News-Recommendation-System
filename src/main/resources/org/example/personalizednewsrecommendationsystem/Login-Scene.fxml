@@ -34,7 +34,7 @@
         <Button layoutX="62.0" layoutY="466.0" mnemonicParsing="false" onAction="#onRegisterButtonClick" prefHeight="14.0" prefWidth="282.0" stylesheets="@../../../Buttons.css" text="Register" />
         <TextField fx:id="loggingUserName" layoutX="62.0" layoutY="202.0" prefHeight="30.0" prefWidth="300.0" stylesheets="@../../../Text-Area.css" />
         <PasswordField fx:id="loggingUserPassword" layoutX="62.0" layoutY="275.0" prefHeight="30.0" prefWidth="300.0" stylesheets="@../../../Text-Area.css" />
-      <Label fx:id="loggingMessage" alignment="CENTER" layoutX="62.0" layoutY="342.0" prefHeight="25.0" prefWidth="300.0" textAlignment="CENTER" textFill="#790b0b">
+      <Label fx:id="loggingMessage" alignment="CENTER" layoutX="27.0" layoutY="343.0" prefHeight="25.0" prefWidth="353.0" textAlignment="CENTER" textFill="#790b0b">
          <font>
             <Font name="Times New Roman" size="18.0" />
          </font></Label>
@@ -61,9 +61,9 @@
             <Image url="@../../../Logo-3.png" />
          </image>
       </ImageView>
-      <Label layoutX="467.0" layoutY="278.0" prefHeight="129.0" prefWidth="222.0" text="Experience tailored news at your fingertips with our personalized recommendation system, delivering the latest articles curated to match your unique interests and reading patterns" textAlignment="RIGHT" textFill="WHITE" wrapText="true">
+      <Label layoutX="454.0" layoutY="278.0" prefHeight="170.0" prefWidth="235.0" text="Experience tailored news at your fingertips with our personalized recommendation system, delivering the latest articles curated to match your unique interests and reading patterns" textAlignment="RIGHT" textFill="WHITE" wrapText="true">
          <font>
-            <Font name="Times New Roman" size="16.0" />
+            <Font name="Times New Roman Bold" size="16.0" />
          </font>
       </Label>
       <Line endX="163.0" layoutX="524.0" layoutY="257.0" startX="-70.66668701171875" stroke="WHITE" /> <!-- Changed to PasswordField -->

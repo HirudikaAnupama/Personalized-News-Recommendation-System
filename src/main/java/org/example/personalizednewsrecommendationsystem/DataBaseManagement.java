@@ -6,7 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class DataBaseManagement {
     private static final String URL = "jdbc:sqlite:NewsFlow_News_Recommendation_System_DataBase.db";
@@ -175,6 +177,64 @@ public class DataBaseManagement {
             System.out.println("Error storing user interaction: " + e.getMessage());
         }
     }
+
+    public void storeUserPreferences(int userId, String category, double preferenceScore) {
+        String query = "INSERT INTO UserPreferences (UserID, Category, PreferenceScore) VALUES (?, ?, ?) " +
+                "ON CONFLICT(UserID, Category) DO UPDATE SET PreferenceScore = ?";
+        try (Connection conn = connect();
+             PreparedStatement pstmt = conn.prepareStatement(query)) {
+            pstmt.setInt(1, userId);
+            pstmt.setString(2, category);
+            pstmt.setDouble(3, preferenceScore);
+            pstmt.setDouble(4, preferenceScore); // Update the score if already exists
+            pstmt.executeUpdate();
+            System.out.println("User preference stored/updated successfully.");
+        } catch (SQLException e) {
+            System.out.println("Error storing user preference: " + e.getMessage());
+        }
+    }
+
+
+
+
+
+    public List<String> getRecommendedArticlesByPreference(int userId, int limit) {
+        List<String> recommendedArticles = new ArrayList<>();
+        String query = """
+    SELECT category, PreferenceScore FROM UserPreferences
+    WHERE UserID = ? ORDER BY PreferenceScore DESC LIMIT ?;
+    """;
+        try (Connection conn = connect();
+             PreparedStatement pstmt = conn.prepareStatement(query)) {
+            pstmt.setInt(1, userId);
+            pstmt.setInt(2, limit);
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                String category = rs.getString("category");
+                String fetchHeadlinesQuery = "SELECT headline FROM Articles WHERE category = ?";
+                try (PreparedStatement pstmt2 = conn.prepareStatement(fetchHeadlinesQuery)) {
+                    pstmt2.setString(1, category);
+                    ResultSet rs2 = pstmt2.executeQuery();
+                    while (rs2.next()) {
+                        recommendedArticles.add(rs2.getString("headline"));
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Error fetching recommended articles: " + e.getMessage());
+        }
+        return recommendedArticles;
+    }
+
+    // Example method for fetching recommended headlines (this is similar to the previous one)
+    public List<String> getRecommendedHeadlinesByCategory(int userId, int categoryLimit) {
+        List<String> recommendedHeadlines = getRecommendedArticlesByPreference(userId, categoryLimit);
+        return recommendedHeadlines;
+    }
+
+
+
+
 
 
 

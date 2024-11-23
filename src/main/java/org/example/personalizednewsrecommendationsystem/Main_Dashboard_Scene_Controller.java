@@ -58,4 +58,20 @@ public class Main_Dashboard_Scene_Controller {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    public void onRecommendation(ActionEvent event) throws IOException {
+        Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Recommendation-Scene.fxml"));
+        Parent parent = loader.load();
+
+        // Get the controller and pass userId to load recommendations
+        RecommendationSceneController recommendationController = loader.getController();
+        recommendationController.initialize(userID);  // Pass the logged-in user's ID
+
+        stage.setScene(new Scene(parent, 950, 650));
+        stage.setTitle("NewsFlow");
+    }
+
+
 }
