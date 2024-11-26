@@ -9,7 +9,7 @@
 <AnchorPane prefHeight="650.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.personalizednewsrecommendationsystem.View_Article_Scene_Controller">
     <children>
         <!-- ImageView for displaying the article image -->
-        <ImageView fx:id="articleImageView" fitWidth="200.0" layoutX="20.0" layoutY="20.0" preserveRatio="true" />
+        <ImageView fx:id="articleImageView" fitHeight="148.0" fitWidth="200.0" layoutX="20.0" layoutY="20.0" preserveRatio="true" />
 
         <!-- ScrollPane for the description -->
         <ScrollPane hbarPolicy="NEVER" layoutX="20.0" layoutY="240.0" prefHeight="130.0" prefWidth="560.0" vbarPolicy="ALWAYS">
