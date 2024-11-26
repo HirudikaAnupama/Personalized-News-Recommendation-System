@@ -112,6 +112,8 @@ public class Article_List_Scene_Controller {
                 String headline = selectedHeadline.split("\n", 2)[1];
                 int articleID = dbManager.getArticleID(headline); // Retrieve ArticleID
                 showDescriptionScene(headline, articleID);
+
+
             }
         });
     }
