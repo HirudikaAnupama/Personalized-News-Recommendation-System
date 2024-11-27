@@ -26,6 +26,7 @@ public class Article_List_Scene_Controller {
 
     private final DataBaseManagement dbManager = new DataBaseManagement();
 
+
     private int userID; // UserID passed from login scene
 
     public void setUserID(int userID) {
