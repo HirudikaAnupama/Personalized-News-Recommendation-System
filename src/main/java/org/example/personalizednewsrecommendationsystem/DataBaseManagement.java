@@ -198,6 +198,7 @@ public class DataBaseManagement {
 
 
 
+
     public List<String> getRecommendedArticlesByPreference(int userId, int limit) {
         List<String> recommendedArticles = new ArrayList<>();
         String query = """
