@@ -7,6 +7,7 @@ import java.util.List;
 
 public class RecommendationSceneController {
 
+
     @FXML
     public ListView<String> recommendationListView;
 
