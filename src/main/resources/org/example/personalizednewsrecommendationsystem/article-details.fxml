@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="650.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.personalizednewsrecommendationsystem.GUIContollers.ArticleDetailsController">
+    <children>
+        <!-- ImageView for displaying the article image -->
+        <ImageView fx:id="articleImageView" fitHeight="201.0" fitWidth="479.0" layoutX="407.0" layoutY="10.0" />
+
+        <!-- ScrollPane for the description -->
+        <ScrollPane hbarPolicy="NEVER" layoutX="-1.0" layoutY="218.0" prefHeight="429.0" prefWidth="900.0" stylesheets="@../../../ScrollPanel.css" vbarPolicy="ALWAYS">
+            <content>
+                <!-- Label for displaying the article description -->
+                <Label fx:id="descriptionLabel" alignment="TOP_LEFT" prefHeight="709.0" prefWidth="873.0" wrapText="true">
+                    <font>
+                        <Font name="Times New Roman" size="33.0" />
+                    </font>
+                </Label>
+            </content>
+        </ScrollPane>
+        <Button fx:id="liked" layoutX="14.0" layoutY="141.0" mnemonicParsing="false" onAction="#onLikedButtonClick" prefHeight="43.0" prefWidth="100.0" stylesheets="@../../../Rating-buttons.css" text="Like" />
+        <Button fx:id="skipped" layoutX="264.0" layoutY="141.0" mnemonicParsing="false" onAction="#onSkippedButtonClick" prefHeight="43.0" prefWidth="100.0" stylesheets="@../../../Rating-buttons.css" text="Skip" />
+        <Button fx:id="read" layoutX="137.0" layoutY="141.0" mnemonicParsing="false" onAction="#onReadButtonClick" prefHeight="43.0" prefWidth="100.0" stylesheets="@../../../Rating-buttons.css" text="Read" />
+        <Button layoutX="799.0" layoutY="19.0" mnemonicParsing="false" onAction="#onBackToViewArticleList" prefHeight="43.0" prefWidth="76.0" stylesheets="@../../../Backbutton-view-news-description.css" text="Back" />
+      <Label layoutX="21.0" layoutY="71.0" prefHeight="29.0" prefWidth="314.0" text="Rate your news article" textFill="#102d4d">
+         <font>
+            <Font name="Times New Roman" size="26.0" />
+         </font>
+      </Label>
+      <Label layoutX="21.0" layoutY="13.0" prefHeight="66.0" prefWidth="285.0" text="News description" textFill="#102d4d">
+         <font>
+            <Font name="Times New Roman" size="39.0" />
+         </font>
+      </Label>
+      <Label fx:id="RatingDisplay" layoutX="21.0" layoutY="104.0" prefHeight="25.0" prefWidth="235.0" textFill="#980000">
+         <font>
+            <Font name="Times New Roman" size="16.0" />
+         </font>
+      </Label>
+    </children>
+</AnchorPane>

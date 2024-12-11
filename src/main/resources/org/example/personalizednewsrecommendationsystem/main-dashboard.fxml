@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="550.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.personalizednewsrecommendationsystem.GUIContollers.MainDashboardController">
+    <children>
+        <ImageView fitHeight="550.0" fitWidth="720.0" layoutX="1.0" opacity="0.71" pickOnBounds="true">
+            <image>
+                <Image url="@../../../Background.jpg" />
+            </image>
+        </ImageView>
+        <Label fx:id="userNameDisplay" alignment="CENTER" layoutY="17.0" prefHeight="57.0" prefWidth="720.0" textFill="#102d4d">
+            <font>
+                <Font name="Times New Roman Bold" size="48.0" />
+            </font>
+        </Label>
+        <ImageView fitHeight="150.0" fitWidth="250.0" layoutX="487.0" layoutY="157.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../mainDash1.png" />
+            </image></ImageView>
+        <ImageView fitHeight="150.0" fitWidth="250.0" layoutX="253.0" layoutY="159.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../mainDash2.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="150.0" fitWidth="250.0" layoutX="18.0" layoutY="161.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../mainDash3.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="139.0" fitWidth="342.0" layoutX="366.0" layoutY="366.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../mainDash4.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="129.0" fitWidth="342.0" layoutX="11.0" layoutY="368.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../MainDash5.png" />
+            </image>
+        </ImageView>
+        <Button layoutX="416.0" layoutY="418.0" mnemonicParsing="false" onAction="#onGetRecommendations" prefHeight="36.0" prefWidth="243.0" stylesheets="@../../../MainDashBoardButton.css" text="Recommendations" />
+        <Button layoutX="58.0" layoutY="419.0" mnemonicParsing="false" onAction="#onViewArticles" prefHeight="36.0" prefWidth="243.0" stylesheets="@../../../MainDashBoardButton.css" text="News Articles" />
+        <Label layoutX="100.0" layoutY="374.0" text="View News Articles" textFill="WHITE">
+            <font>
+                <Font name="Times New Roman Bold" size="19.0" />
+            </font>
+        </Label>
+        <Label layoutX="443.0" layoutY="371.0" text="Get recommendations" textFill="WHITE">
+            <font>
+                <Font name="Times New Roman Bold" size="19.0" />
+            </font>
+        </Label>
+        <Label layoutX="100.0" layoutY="221.0" prefHeight="21.0" prefWidth="55.0" text="20000+">
+            <font>
+                <Font name="Times New Roman Bold" size="17.0" />
+            </font>
+        </Label>
+        <Label layoutX="59.0" layoutY="245.0" text="Over News Articles">
+            <font>
+                <Font name="Times New Roman Bold" size="17.0" />
+            </font>
+        </Label>
+        <Label layoutX="582.0" layoutY="216.0" prefHeight="25.0" prefWidth="28.0" text="20+">
+            <font>
+                <Font name="Times New Roman Bold" size="17.0" />
+            </font>
+        </Label>
+        <Label layoutX="536.0" layoutY="240.0" text="News Chategory">
+            <font>
+                <Font name="Times New Roman Bold" size="17.0" />
+            </font>
+        </Label>
+        <Label alignment="CENTER" layoutX="292.0" layoutY="220.0" prefHeight="43.0" prefWidth="149.0" text="Personalized Recomendations" textAlignment="CENTER" wrapText="true">
+            <font>
+                <Font name="Times New Roman Bold" size="17.0" />
+            </font>
+        </Label>
+        <Line endX="411.3333740234375" layoutX="198.0" layoutY="74.0" startX="-100.0" stroke="#1b243a" />
+        <Label alignment="CENTER" layoutX="126.0" layoutY="75.0" prefHeight="36.0" prefWidth="485.0" text="NewsFlow Personalized News Recomendation System" textAlignment="CENTER" textFill="#102d4d">
+            <font>
+                <Font name="Times New Roman Bold" size="20.0" />
+            </font>
+        </Label>
+        <ImageView fitHeight="73.0" fitWidth="104.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../Logo-3.png" />
+            </image>
+        </ImageView>
+      <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="659.0" layoutY="15.0" onMouseClicked="#onLogout" opacity="0.82" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../logout.png" />
+         </image>
+      </ImageView>
+    </children>
+</AnchorPane>

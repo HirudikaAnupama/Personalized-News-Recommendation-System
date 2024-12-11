@@ -1,0 +1,27 @@
+/* Base style for the button */
+.button {
+    -fx-background-color: #102d4d; /* Green */
+    -fx-text-fill: rgba(255, 255, 255, 0.96);
+    -fx-font-size: 18px;
+    -fx-font-family: "Times New Roman";
+    -fx-padding: 8px 18px;
+    -fx-background-radius: 40px;
+    -fx-cursor: hand; /* Change cursor to hand on hover */
+
+}
+
+/* Hover effect */
+.button:hover {
+    -fx-background-color: rgb(221, 221, 221); /* Darker Green */
+    -fx-text-fill: #000000;
+    -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.46), 10, 0.5, 0, 3);
+    -fx-scale-x: 1.1;              /* Scale up the button on hover */
+    -fx-scale-y: 1.1;              /* Scale up the button on hover */
+
+}
+
+/* Hover effect for pressed state */
+.button:pressed {
+    -fx-background-color: #727272; /* Even Darker Green */
+
+}

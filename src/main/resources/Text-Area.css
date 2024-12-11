@@ -1,14 +1,15 @@
 /* Define the base style for the TextField without borders */
 .text-field {
     -fx-background-color: transparent; /* Make background transparent */
-    -fx-text-fill: #000000;            /* Text color */
-    -fx-border-color: transparent;     /* Remove all borders */
-    -fx-border-width: 0;               /* No border width */
+    -fx-text-fill: #102d4d;            /* Text color */
+
+
     -fx-padding: 5px;                  /* Padding */
-    -fx-font-size: 19px;               /* Font size */
+    -fx-font-size: 20px;               /* Font size */
     -fx-font-family: "Times New Roman";          /* Font family */
     -fx-border-style: none none solid none; /* Only bottom border */
-    -fx-border-color: #020202;         /* Bottom border color */
+    -fx-border-color: #004673;         /* Bottom border color */
+
     -fx-border-width: 0 0 1px 0;       /* Bottom border width */
 }
 
