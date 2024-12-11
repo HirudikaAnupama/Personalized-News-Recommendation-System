@@ -1,40 +1,50 @@
 /* Apply to the ScrollPane */
 .scroll-pane {
-    -fx-background-color: #f0f0f0; /* Background color of the scroll pane */
-    -fx-padding: 10;              /* Inner padding for content */
-    -fx-border-color: #cccccc;    /* Border color */
-    -fx-border-width: 1px;        /* Border thickness */
-    -fx-border-radius: 5px;       /* Rounded corners for the border */
-    -fx-background-radius: 5px;   /* Rounded corners for the background */
+    -fx-background-color: rgba(253, 253, 253, 0.55);  /* Background color of the scroll pane */
+    -fx-padding: 10;                 /* Inner padding for content */
+    -fx-border-color: #cccccc;       /* Border color */
+    -fx-border-width: 1px;           /* Border thickness */
+    -fx-border-radius: 5px;          /* Rounded corners for the border */
+    -fx-background-radius: 5px;      /* Rounded corners for the background */
+    -fx-font-family: "Times New Roman";
 }
 
 /* Custom ScrollBar styling */
 .scroll-bar {
-    -fx-background-color: transparent; /* Transparent background for the scrollbar */
+    -fx-background-color: transparent;  /* Transparent background for the scrollbar */
 }
 
 /* Thumb (the draggable part of the scrollbar) */
 .scroll-bar .thumb {
-    -fx-background-color: #b3cde0;     /* Light blue thumb color */
+    -fx-background-color: #b3cde0;       /* Light blue thumb color */
     -fx-background-radius: 5px;
-    -fx-pref-width: 8px;               /* Width for vertical scrollbar */
-    -fx-pref-height: 8px;              /* Height for horizontal scrollbar */
+    -fx-pref-width: 8px;                 /* Width for vertical scrollbar */
+    -fx-pref-height: 8px;                /* Height for horizontal scrollbar */
 }
 
 /* Track (the area the thumb slides on) */
 .scroll-bar .track {
-    -fx-background-color: #e0e0e0;  /* Light grey track */
+    -fx-background-color: #e0e0e0;       /* Light grey track */
     -fx-border-radius: 5px;
     -fx-background-insets: 2;
 }
 
 /* Hover effect for the thumb */
 .scroll-bar .thumb:hover {
-    -fx-background-color: #5c5c5c; /* Darker color when hovered */
+    -fx-background-color: #5c5c5c;       /* Darker color when hovered */
 }
 
 .scroll-bar .increment-button, .scroll-bar .decrement-button {
-    -fx-background-color: transparent; /* Transparent buttons */
-    -fx-padding: 0;                     /* Remove padding for a clean look */
+    -fx-background-color: transparent;   /* Transparent buttons */
+    -fx-padding: 0;                       /* Remove padding for a clean look */
 }
 
+/* Label inside ScrollPane */
+.scroll-pane .label {
+    -fx-wrap-text: true;          /* Enables text wrapping */
+    -fx-font-size: 30px;          /* Sets font size */
+    -fx-pref-height: 700px;
+    -fx-background-color: linear-gradient(to bottom, rgba(254, 254, 254, 0.61), rgba(178, 178, 178, 0.3));
+    -fx-text-fill: #102d4d;
+
+}

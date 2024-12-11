@@ -1,20 +1,20 @@
 /* Base style for the button */
 .button {
-    -fx-background-color: #c8c7c7; /* Green */
+    -fx-background-color: #adacac; /* Green */
     -fx-text-fill: #000000;
     -fx-font-size: 18px;
     -fx-font-family: "Times New Roman";
     -fx-padding: 8px 18px;
     -fx-background-radius: 30px;
     -fx-cursor: hand; /* Change cursor to hand on hover */
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 5, 0.3, 0, 3);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.52), 5, 0.3, 0, 3);
 }
 
 /* Hover effect */
 .button:hover {
-    -fx-background-color: rgb(122, 122, 122); /* Darker Green */
+    -fx-background-color: rgb(90, 89, 89); /* Darker Green */
     -fx-text-fill: #fdfcfc;
-    -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.46), 10, 0.5, 0, 3);
+    -fx-effect: dropshadow(gaussian, rgba(69, 68, 68, 0.68), 10, 0.5, 0, 3);
     -fx-scale-x: 1.1;              /* Scale up the button on hover */
     -fx-scale-y: 1.1;              /* Scale up the button on hover */
 
