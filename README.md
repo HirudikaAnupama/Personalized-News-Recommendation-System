@@ -1,4 +1,3 @@
-### Appendix
 
 <img src="https://github.com/user-attachments/assets/a1f498b6-6143-4cac-9837-a38ecf1a5d5e" width="650" height="500" style="margin: 20px;" alt="Screenshot 1">
 
